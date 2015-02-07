@@ -1,0 +1,57 @@
+<ion-view view-title="Dashboard">
+  <ion-content class="padding">
+
+<style>
+.item {
+  left:0;
+  right: 0;
+}
+</style>
+
+  <ion-refresher on-refresh="doRefresh()"></ion-refresher>
+
+  <ion-list>
+
+    <ion-item ng-if="newItems.length > 0" ng-click="doRefresh()">
+        {{newItems.length}} new items
+    </ion-item>
+
+    <ion-item class="item-avatar"
+    collection-repeat="item in items"
+    collection-item-width="'100%'"
+    collection-item-height="'70px'"
+    >
+        <img src="{{item.user.picture.thumbnail}}"/>
+        <h2>{{item.user.name.first}}</h2>
+        <p>{{item.user.location.city}} {{item.user.password}}</p>
+    </ion-item>
+  </ion-list>
+
+  <ion-infinite-scroll on-infinite="loadMore()" distance="5%"></ion-infinite-scroll>
+
+<!--     <div class="list card">
+      <div class="item item-divider">Recent Updates</div>
+      <div class="item item-body">
+        <div>
+          There is a fire in <b>sector 3</b>
+        </div>
+      </div>
+    </div>
+    <div class="list card">
+      <div class="item item-divider">Health</div>
+      <div class="item item-body">
+        <div>
+          You ate an apple today!
+        </div>
+      </div>
+    </div>
+    <div class="list card">
+      <div class="item item-divider">Upcoming</div>
+      <div class="item item-body">
+        <div>
+          You have <b>29</b> meetings on your calendar tomorrow.
+        </div>
+      </div>
+    </div> -->
+  </ion-content>
+</ion-view>
